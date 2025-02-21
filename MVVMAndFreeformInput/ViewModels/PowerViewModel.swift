@@ -7,6 +7,7 @@
 
 import Foundation
 
+@Observable
 class PowerViewModel {
     
     // MARK: Stored properties
@@ -47,7 +48,6 @@ class PowerViewModel {
         
     }
 
-    
     // MARK: Initializer(s)
     init(
         providedBase: String = "",
