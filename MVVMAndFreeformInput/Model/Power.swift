@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Power {
+struct Power: Identifiable {
     
     // MARK: Stored properties
+    let id = UUID()
     var base: Double
     var exponent: Int
     
