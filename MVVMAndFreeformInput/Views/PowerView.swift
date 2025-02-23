@@ -26,8 +26,14 @@ struct PowerView: View {
                 HStack(alignment: .center) {
                     HStack(alignment: .top) {
                         
-                        Text("(\(power.base.formatted()))")
-                            .font(.system(size: 96))
+                        // Display brackets for negative bases
+                        if power.base < 0 {
+                            Text("(\(power.base.formatted()))")
+                                .font(.system(size: 96))
+                        } else {
+                            Text("\(power.base.formatted())")
+                                .font(.system(size: 96))
+                        }
                         
                         Text("\(power.exponent)")
                             .font(.system(size: 44))
@@ -38,8 +44,25 @@ struct PowerView: View {
                         Text("=")
                             .font(.system(size: 96))
                         
-                        Text("\(power.result.formatted())")
-                            .font(.system(size: 96))
+                        // View for negative exponents
+                        if power.exponent < 0 {
+                            VStack (spacing: 0) {
+                                Text("1")
+                                    .font(.system(size: 96))
+                                
+                                Rectangle()
+                                    .frame(height: 3)
+                                
+                                Text("\(power.result.formatted())")
+                                    .font(.system(size: 96))
+                            }
+                            
+                        } else {
+                            
+                            // View for positive or zero exponents
+                            Text("\(power.result.formatted())")
+                                .font(.system(size: 96))
+                        }
                     }
                 }
                 .lineLimit(1)

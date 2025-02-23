@@ -18,20 +18,16 @@ class PowerViewModel {
     // MARK: Computed properties
     var power: Power? {
         
-        // First check that the string in providedBase can
-        // be converted into a number, then check that the
-        // value is more than 0
+        // Check that the string in providedBase can be converted into a number
         guard let base = Double(providedBase) else {
             recoverySuggestion = "Please provide a numerical value for the base of the power."
             
             return nil
         }
         
-        // Now check that the string in providedExponent can be
-        // converted into an integer, and that the value is
-        // more than or equal to 0
-        guard let exponent = Int(providedExponent), exponent >= 0 else {
-            recoverySuggestion = "Please provide an integer value of 0 or greater for the exponent."
+        // Check that the string in providedExponent can be converted into an integer
+        guard let exponent = Int(providedExponent) else {
+            recoverySuggestion = "Please provide an integer value for the exponent."
             
             return nil
         }

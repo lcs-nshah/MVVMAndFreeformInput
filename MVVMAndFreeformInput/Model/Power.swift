@@ -18,11 +18,13 @@ struct Power {
         
         var solution = 1.0
         
+        // Check for zero exponent
         if exponent == 0 {
             return solution
             
         } else {
-            for _ in 1...exponent {
+            
+            for _ in 1...abs(exponent) {
                 solution *= base
             }
             
