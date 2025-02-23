@@ -21,7 +21,6 @@ struct PowerView: View {
             // OUTPUT
             // When the power can be unwrapped, show the result
             if let power = viewModel.power {
-                
                 // Show the provided base, exponent, and result
                 HStack(alignment: .center) {
                     HStack(alignment: .top) {
@@ -56,9 +55,7 @@ struct PowerView: View {
                                 Text("\(power.result.formatted())")
                                     .font(.system(size: 96))
                             }
-                            
                         } else {
-                            
                             // View for positive or zero exponents
                             Text("\(power.result.formatted())")
                                 .font(.system(size: 96))
@@ -69,8 +66,18 @@ struct PowerView: View {
                 .minimumScaleFactor(0.1)
                 .frame(height: 300)
                 
-            } else {
+                // Add a button so that the result can be saved
+                Button {
+                    viewModel.saveResult()
+                    // DEBUG: Show how many items are in the resultHistory array
+                    print("There are \(viewModel.resultHistory.count) elements in the resultHistory array.")
+                } label: {
+                    Text("Save")
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.bottom)
                 
+            } else {
                 // Show a message indicating that we are
                 // awaiting reasonable input
                 ContentUnavailableView(
